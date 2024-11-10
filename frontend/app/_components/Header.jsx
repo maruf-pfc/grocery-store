@@ -24,10 +24,10 @@ function Header() {
   }, []);
   const categories = () => {
     globalAPI.getCategory().then((res) => {
-      setCategoryList(res.data);
-
       // divide the size of setCategoryList by 3
-      setCategoryList(res.data.slice(0, Math.ceil(res.data.length / 3)));
+      const categoryList = res.data.slice(0, Math.ceil(res.data.length / 3));
+      setCategoryList(categoryList);
+      console.log(categoryList);
     });
   };
 
@@ -45,7 +45,7 @@ function Header() {
             <DropdownMenuLabel>Browse Category</DropdownMenuLabel>
             <DropdownMenuSeparator />
             {categoryList.map((category, _id) => (
-              <DropdownMenuItem key={_id}>
+              <DropdownMenuItem key={_id} asChild>
                 <Image
                   src={
                     process.env.NEXT_PUBLIC_BACKEND_BASE_URL +

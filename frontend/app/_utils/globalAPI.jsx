@@ -9,6 +9,14 @@ const getCategory = async () => {
   return response.data;
 };
 
+const getSliders = async () => {
+  const response = await axiosClient.get("/sliders?populate=*").then((res) => {
+    return res.data;
+  });
+  return response.data;
+};
+
 export default {
   getCategory,
+  getSliders,
 };
