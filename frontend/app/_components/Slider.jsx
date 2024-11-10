@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 
-const Slider = ({ sliderList }) => {
+const Slider = ({ sliderList, backendBaseUrl }) => {
   return (
     <div>
       <Carousel>
@@ -16,10 +16,13 @@ const Slider = ({ sliderList }) => {
             <CarouselItem key={_id}>
               <Image
                 src={
-                  process.env.NEXT_PUBLIC_BACKEND_BASE_URL +
+                  backendBaseUrl +
                   slider?.image?.[0]?.url
                 }
-                alt="slider" width={1000} height={400} className="w-full h-[200px] md:h-[550px] object-cover rounded-2xl"
+                alt="slider"
+                width={1000}
+                height={400}
+                className="w-full h-[200px] md:h-[550px] object-cover rounded-2xl"
               />
             </CarouselItem>
           ))}

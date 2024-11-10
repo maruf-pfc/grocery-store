@@ -25,11 +25,11 @@ function Header() {
   const categories = () => {
     globalAPI.getCategory().then((res) => {
       // divide the size of setCategoryList by 3
-      const categoryList = res.data.slice(0, Math.ceil(res.data.length / 3));
-      setCategoryList(categoryList);
-      console.log(categoryList);
+      setCategoryList(res.data.slice(0, Math.ceil(res.data.length / 3)));
     });
   };
+
+  const backendBaseUrl = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 
   return (
     <div className="p-5 shadow-md flex items-center justify-between">
@@ -45,12 +45,9 @@ function Header() {
             <DropdownMenuLabel>Browse Category</DropdownMenuLabel>
             <DropdownMenuSeparator />
             {categoryList.map((category, _id) => (
-              <DropdownMenuItem key={_id} asChild>
+              <DropdownMenuItem key={_id}>
                 <Image
-                  src={
-                    process.env.NEXT_PUBLIC_BACKEND_BASE_URL +
-                    category?.icon?.[0]?.url
-                  }
+                  src={backendBaseUrl + category?.icon?.[0]?.url}
                   alt="icon"
                   width={25}
                   height={25}
