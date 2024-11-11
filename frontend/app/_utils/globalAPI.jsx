@@ -27,8 +27,16 @@ const getCategoryList = async () => {
   return response;
 };
 
+const getAllProducts = async () => {
+  const response = await axiosClient.get("/products?populate=*").then((res) => {
+    return res.data;
+  });
+  return response;
+};
+
 export default {
   getCategory,
   getSliders,
   getCategoryList,
+  getAllProducts,
 };

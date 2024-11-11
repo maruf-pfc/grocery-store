@@ -12,7 +12,7 @@ const CategoryList = ({ CategoryList, backendBaseUrl }) => {
         {CategoryList.map((category, _id) => (
           <div
             key={_id}
-            className="flex flex-col items-center bg-green-100 gap-2 py-4 rounded-lg group cursor-pointer"
+            className="flex flex-col items-center bg-green-100 gap-2 py-4 rounded-lg group cursor-pointer hover:bg-green-200 transition-all ease-in-out"
           >
             <Image
               src={backendBaseUrl + category?.icon?.[0]?.url}
